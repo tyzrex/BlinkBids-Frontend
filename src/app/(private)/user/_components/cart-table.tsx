@@ -6,7 +6,6 @@ import EmptyCart from "public/emptycart.png";
 import ProductQuantity from "./product-quantity";
 import RemoveCartItem from "./remove-cart-item";
 
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -16,17 +15,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -75,6 +63,7 @@ export default function Table(props: any) {
   }
 
   const router = useRouter();
+  console.log(props.cartItems);
 
   const submitForm = async (formData: checkoutSchemaType) => {
     if (formData.payment_method === "esewa") {
@@ -157,7 +146,7 @@ export default function Table(props: any) {
                         </span>
 
                         <div className="hidden md:flex justify-end mt-4 md:mt-0">
-                          <RemoveCartItem id={item.product.id} />
+                          <RemoveCartItem id={item.id} />
                         </div>
                       </div>
                     ))}

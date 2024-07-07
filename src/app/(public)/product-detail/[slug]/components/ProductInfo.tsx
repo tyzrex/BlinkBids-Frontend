@@ -13,9 +13,6 @@ import { useRouter } from "next/navigation";
 import ProductDescription from "./ProductDescription";
 
 export default function ProductInfo(props: any) {
-  const session = useSession();
-  const router = useRouter();
-
   const cartAdd = async (id: number) => {
     try {
       const response = await addToCart(id, 1);
@@ -27,15 +24,6 @@ export default function ProductInfo(props: any) {
     } catch (error) {
       //console.log(error);
       toast.error("Something went wrong");
-    }
-  };
-
-  const applyEmiHandler = () => {
-    if (session.status !== "authenticated") {
-      toast.error("Please login to apply for EMI");
-      return;
-    } else {
-      router.push(`/product/emi/${props.slug}`);
     }
   };
 

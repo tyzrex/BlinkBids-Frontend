@@ -39,8 +39,10 @@ export const addToCart = async (productId: number, itemQuantity?: number) => {
 
 export const removeFromCart = async (productId: number) => {
   const session = await initSession();
-  const url = `orders/cart/remove/?product=${productId}`;
-  const res = await serverProtectedRequest(url, "POST", session);
+  const url = `carts/remove/`;
+  const res = await serverProtectedRequest(url, "DELETE", session, {
+    product_id: productId,
+  });
   revalidatePath("/user/cart");
   return res;
 };

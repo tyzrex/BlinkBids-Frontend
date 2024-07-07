@@ -20,8 +20,6 @@ async function CartItems() {
   const session = await getServerSession(options);
   const cartItems: any = await getCartItems(session);
 
-  console.log(cartItems);
-
   return (
     <>
       <CartTable cartItems={cartItems} />
