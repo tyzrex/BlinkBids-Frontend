@@ -8,7 +8,7 @@ export default function MobileCategorySwiper({ data }: any) {
     <>
       <div className="overflow-hidden">
         <div className="flex items-center gap-2 w-full overflow-auto pb-4 mobile-category-swiper mt-4 relative ">
-          {data?.map((item: any, index: number) => {
+          {data?.results?.map((item: any, index: number) => {
             return (
               <Link
                 prefetch={false}

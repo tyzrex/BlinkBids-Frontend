@@ -37,7 +37,6 @@ export default async function Home() {
 
       <MobileProductCategories />
       <ProductCategories />
-      {/* <HomeProducts category="new" name="New Products" /> */}
 
       {data.map((category: any) => (
         <HomeProductsNew

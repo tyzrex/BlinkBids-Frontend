@@ -7,7 +7,7 @@ export default function CategoriesSwiper({ data }: any) {
     <>
       <div className="grid grid-cols-4 gap-5">
         {data &&
-          data.slice(0, 8)?.map((item: any, index: number) => {
+          data.results.slice(0, 8)?.map((item: any, index: number) => {
             return (
               <div key={index} className="flex-[0_0_auto] xl:basis-1/7">
                 <Link prefetch={false} href={`/category/${item.name}`}>
