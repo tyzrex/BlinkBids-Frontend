@@ -21,7 +21,7 @@ export const esewaCheckout = async (data: any) => {
   const session = await initSession();
   try {
     const res = await serverProtectedRequest(
-      `orders/pay/esewa/`,
+      `pay/esewa/`,
       "POST",
       session,
       data
@@ -58,42 +58,6 @@ export const cashCheckout = async () => {
     return handleSuccessResponse(res, "Order placed successfully");
   } catch (err) {
     return handleErrorResponse(err);
-  }
-};
-
-export const khaltiCheckout = async (data: any) => {
-  const session = await initSession();
-  try {
-    const res = await serverProtectedRequest(
-      `orders/pay/khalti/`,
-      "POST",
-      session,
-      data
-    );
-    revalidatePath("/user/cart");
-    if (res?.data) {
-      const response = await fetch(
-        "https://a.khalti.com/api/v2/epayment/initiate/",
-        {
-          method: "POST",
-          headers: {
-            Authorization: `key ${process.env.KHALTI_SECRET_KEY}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(res?.data),
-        }
-      );
-      //test
-
-      return {
-        // url: khaltiResponse.payment_url
-        url: await response.json().then((data) => data.payment_url),
-      };
-    }
-  } catch (err) {
-    return {
-      error: returnError(err),
-    };
   }
 };
 
