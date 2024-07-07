@@ -23,22 +23,14 @@ export default async function MyOrdersPage(props: TOrderProps) {
       <ErrorComponent error={myOrders?.error} message={myOrders?.message} />
     );
 
-  // console.log(myOrders);
+  console.log(myOrders);
   return (
     <>
       <div className="py-10 w-full">
         <h3 className="title-typography">My Orders</h3>
 
         <div className="w-full">
-          <DataTable columns={columns} data={myOrders?.results} />
-
-          <Pagination
-            currentPage={currentPage}
-            total_pages={myOrders?.total_pages}
-            next={myOrders?.next}
-            previous={myOrders?.previous}
-            path="/user/orders"
-          />
+          <DataTable columns={columns} data={myOrders} />
         </div>
       </div>
     </>

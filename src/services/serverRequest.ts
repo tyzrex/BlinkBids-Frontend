@@ -65,7 +65,7 @@ export async function serverProtectedRequest(
       method: method,
       headers: headers,
       body: JSON.stringify(body),
-      // cache: "no-cache",
+      cache: "no-cache",
     });
     //console.log(response)
 
@@ -170,10 +170,7 @@ export async function requestHandler<
       headers: headers,
       body: body instanceof FormData ? body : JSON.stringify(body),
       // cache: "no-store",
-      next: {
-        revalidate: 60,
-        tags: tags,
-      },
+      cache: "no-cache",
     });
 
     if (response.ok) {

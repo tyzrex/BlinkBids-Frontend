@@ -43,7 +43,9 @@ export default function ProductsSwiper({
                   price={item.price}
                   images={
                     //check if the image is null or not
-                    item.images ? item.images[0].image_url : "404.png"
+                    item.images.length > 0
+                      ? item.images[0].image_url
+                      : "/404.png"
                   }
                   slug={item.slug}
                   className="sm:max-w-[234px] xl:max-w-none"
