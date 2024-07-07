@@ -5,7 +5,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { ImageWithFallback } from "./image-with-fallback";
 
-export default function ProdCard(props: IProductCardsProps) {
+export default function ProdCard(props: any) {
   return (
     <Link href={`/product-detail/${props.slug}`} prefetch={false}>
       <div

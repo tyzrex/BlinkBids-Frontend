@@ -51,6 +51,7 @@ const SearchPageContent = async (props: ISearchProps) => {
   const searchQuery = props?.searchParams?.query;
 
   const products = await searchProducts(props.searchParams);
+  console.log(products);
 
   if (products.error) {
     return <ErrorComponent message="Product Not Found" error={"Error 404"} />;
@@ -70,12 +71,6 @@ const SearchPageContent = async (props: ISearchProps) => {
               {" "}
               You searched for {searchQuery}
             </h1>
-            <div className="lg:hidden">
-              <SearchFilterModel
-                brands={products?.results?.brands}
-                query={searchQuery}
-              />
-            </div>
           </div>
           <div className="flex-between">
             <p className="text-gray-600">{products?.count} products found</p>
@@ -85,16 +80,8 @@ const SearchPageContent = async (props: ISearchProps) => {
       </div>
 
       <div className="flex flex-col lg:flex-row items-start gap-4 w-full">
-        <div className="lg:flex xl:w-[25%] hidden">
-          <Suspense fallback={null}>
-            <FilterComponent
-              brands={products?.results?.brands}
-              query={searchQuery}
-            />
-          </Suspense>
-        </div>
         <div className="w-full h-full ">
-          <ProductGrid data={products?.results?.products} />
+          <ProductGrid data={products?.results} />
 
           {products?.count === 0 && (
             <ErrorComponent message="Product Not Found" error={"Error 404"} />
