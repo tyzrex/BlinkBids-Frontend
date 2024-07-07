@@ -1,0 +1,17 @@
+version: "3"
+services:
+  production:
+    container_name: fatafat_fe
+    image: fatafat_fe_image:latest  # Tag the image to ensure reuse
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # Add tag to the build to ensure the image is reused
+      args:
+        - IMAGE_TAG=latest
+    env_file:
+      - .env.production
+    ports:
+      - "3000:3000"
+    restart: always

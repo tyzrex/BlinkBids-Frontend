@@ -1,0 +1,463 @@
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// *{
+//   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+// }
+// body {
+//   background-color: gray;
+// }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-outfit), sans-serif;
+}
+
+body {
+  font-family: var(--font-spline-sans), sans-serif;
+}
+
+.font-outfit {
+  font-family: var(--font-outfit), sans-serif;
+}
+
+.font-spline-sans {
+  font-family: var(--font-spline-sans), sans-serif;
+}
+
+.no-tailwind {
+  all: unset;
+}
+
+.image-gallery-left-nav .image-gallery-svg,
+.image-gallery-right-nav .image-gallery-svg {
+  /* height: 120px; */
+  width: 20px;
+  color: #2c6bb3;
+  box-shadow: none;
+}
+
+.image-gallery-play-button {
+  left: 0;
+  display: none;
+}
+
+.image-gallery-fullscreen-button .image-gallery-svg,
+.image-gallery-play-button .image-gallery-svg {
+  display: none;
+}
+
+@layer components {
+  .max-w-layout {
+    @apply 2xl:max-w-[85vw] 3xl:max-w-[1500px] max-w-[90vw] mx-auto;
+  }
+
+  .admin-max-w-layout {
+    @apply max-w-[95vw] 4xl:max-w-[1500px] mx-auto;
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-around {
+    @apply flex items-center justify-around;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  .flex-col-center {
+    @apply flex flex-col items-center justify-center;
+  }
+
+  .flex-col-start {
+    @apply flex flex-col items-start justify-center;
+  }
+
+  .title-typography {
+    @apply text-[18px] md:text-[24px] lg:text-[28px]  font-semibold text-title-text;
+    //after: content-[''] after:block after:w-full after:h-2 after:bg-gradient-to-r after:from-amber-400 after:to-orange-400 after:mt-4
+  }
+
+  //after:content-[''] after:block after:h-2 after:bg-gradient-to-r after:from-amber-400 after:to-orange-400 after:mt-4 w-max
+
+  .page-title-typography {
+    @apply text-2xl font-bold sm:text-3xl md:text-4xl;
+  }
+
+  .middle-text-title-typography {
+    //have before and after pseudo elements and put the text in between
+    @apply flex items-center gap-5 text-nowrap text-[18px] md:text-[24px] font-bold text-title-text before:content-[''] before:block before:w-full before:h-2 before:bg-gradient-to-r before:bg-accent-1 before:mt-2 after:content-[''] after:block after:w-full after:h-2 after:bg-gradient-to-r after:bg-accent-1 after:mt-2;
+  }
+}
+
+.title-typography,
+.middle-text-title-typography {
+  font-family: var(--font-outfit), sans-serif;
+}
+
+@layer components {
+  .color-transition {
+    @apply transition-colors duration-500 ease-in-out;
+  }
+
+  .all-transition {
+    @apply transition-all duration-500 ease-in-out;
+  }
+
+  .mobile-nav-links {
+    @apply block p-4 text-sm font-semibold text-gray-700 hover:bg-accent-1 dark:hover:bg-gray-900 hover:text-white rounded-xl;
+  }
+
+  .button-hover {
+    @apply hover:bg-accent-1;
+  }
+
+  .login-button {
+    @apply focus:ring-2 focus:ring-offset-2 focus:ring-accent-3 text-sm font-semibold leading-none text-white focus:outline-none bg-accent-1 border rounded hover:bg-accent-3 hover:text-black py-4 w-full color-transition;
+  }
+
+  .accent-button {
+    @apply focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 text-sm font-semibold leading-none text-white focus:outline-none bg-accent-1 border rounded-sm hover:bg-accent-3 py-4 w-full color-transition;
+  }
+
+  .pagination-btn {
+    @apply p-3 bg-accent-2 hover:bg-accent-1 color-transition text-white rounded-full;
+  }
+
+  //customize the select dropdown
+}
+
+.disable-scroll {
+  overflow: hidden;
+}
+
+.mobile-category-swiper::-webkit-scrollbar {
+  //always show the scrollbar
+  width: 10px;
+  /* Width of the scrollbar */
+  height: 10px;
+  /* Height of the scrollbar (for horizontal scrollbars) */
+}
+
+.mobile-category-swiper::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  /* Color of the scrollbar thumb */
+  border-radius: 5px;
+  /* Rounded corners */
+}
+
+.mobile-category-swiper::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+  /* Color of the scrollbar thumb on hover */
+}
+
+.mobile-category-swiper::-webkit-scrollbar-track {
+  background: #d1d1d1;
+  /* Color of the scrollbar track */
+  border-radius: 5px;
+  width: 100%;
+  /* Rounded corners */
+}
+
+/* Firefox */
+.mobile-category-swiper {
+  scrollbar-width: thin;
+  /* Makes the scrollbar thinner */
+  scrollbar-color: #3b82f6 #d1d1d1;
+  /* Color of the scrollbar thumb and track */
+}
+
+.cart-title {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.cart-title-name {
+  letter-spacing: -0.2px;
+  font-size: 16px;
+  &:hover {
+    color: #fd7e14;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: rgba(255, 166, 0, 0.74);
+  padding: 20px 10px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  left: 20;
+  right: 0;
+  &:hover {
+    background-color: #ff3d00;
+  }
+
+  &::after,
+  &::before {
+    scale: 40%;
+    color: white;
+    font-weight: 800;
+  }
+}
+
+.nav-links {
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: orange;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover:after {
+    width: 100%;
+    left: 0;
+  }
+
+  &:hover {
+    color: orange;
+  }
+}
+
+.loader {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 4px solid #2c6bb3;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border-left: 4px solid #ff3d00;
+  border-bottom: 4px solid transparent;
+  animation: rotation 0.5s linear infinite reverse;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+table {
+  border-collapse: collapse;
+}
+
+// /* Style for table headers (th) */
+th {
+  padding: 10px;
+  text-align: left;
+  // background-color: #2c6bb3;
+  // color: white;
+}
+
+// /* Style for alternating rows */
+
+// colgroup {
+//   col {
+//     width: 50%;
+//   }
+// }
+
+// /* Style for table data (td) */
+td {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+
+// /* Style for the first column with headings */
+// th[scope="row"] {
+//   font-weight: bold;
+// }
+
+.blog-description {
+  overflow-x: auto;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    min-width: 100%;
+    table-layout: fixed;
+    // width: 200px;
+  }
+
+  font-size: 14px;
+}
+
+.product-description {
+  overflow-x: auto;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    min-width: 100%;
+    table-layout: fixed;
+    // width: 200px;
+  }
+  font-size: 14px;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  h1 {
+    @apply text-2xl lg:text-3xl xl:text-4xl font-bold text-title-text;
+  }
+
+  h2 {
+    @apply text-xl lg:text-2xl xl:text-3xl font-bold text-title-text;
+  }
+
+  h3 {
+    @apply text-lg lg:text-xl xl:text-2xl font-bold text-title-text;
+  }
+
+  h4 {
+    @apply text-base lg:text-lg xl:text-xl font-bold text-title-text;
+  }
+
+  h5 {
+    @apply text-sm lg:text-base xl:text-lg font-bold text-title-text;
+  }
+
+  h6 {
+    @apply text-xs lg:text-sm xl:text-base font-bold text-title-text;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+}
+
+.page-detail {
+  overflow-x: auto;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    min-width: 100%;
+    table-layout: fixed;
+    // width: 200px;
+  }
+  font-size: 14px;
+}
