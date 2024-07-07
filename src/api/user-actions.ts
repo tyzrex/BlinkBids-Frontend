@@ -21,12 +21,12 @@ export const esewaCheckout = async (data: any) => {
   const session = await initSession();
   try {
     const res = await serverProtectedRequest(
-      `pay/esewa/`,
+      `products/pay/esewa/`,
       "POST",
       session,
       data
     );
-    //console.log(res?.data)
+    console.log(res?.data);
 
     if (res?.data) {
       const orderFormData = new FormData();
