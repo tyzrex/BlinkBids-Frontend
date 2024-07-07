@@ -9,7 +9,7 @@ interface IPayment {
 export default async function Page(props: IPayment) {
   const data = props?.searchParams?.data;
   if (data) {
-    const response = await PostRequest("products/verify/esewa", {
+    const response = await PostRequest("products/verify/esewa/", {
       data: data,
     });
     if (response.status === 200) {
